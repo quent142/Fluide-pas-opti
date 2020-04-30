@@ -112,9 +112,9 @@ def step(a, it):
     F_a0 = np.array([0, 0, a[0] + d, 1, a[1]])
     F_a1 = np.array([0, 0, a[0], 1, a[1] + d])
 
-    X, Y = rk4(dF, (0, 15 + 10*it), a, h)
-    _, Y_a0 = rk4(dF, (0, 15 + 10*it), [a[0] + d, a[1]], h)
-    __, Y_a1 = rk4(dF, (0, 15 + 10*it), [a[0], a[1] + d], h)
+    X, Y = rk4(dF, (0, 15 + it/(Pr * 10)), a, h)
+    _, Y_a0 = rk4(dF, (0, 15 + it/(Pr * 10)), [a[0] + d, a[1]], h)
+    __, Y_a1 = rk4(dF, (0, 15 + it/(Pr * 10)), [a[0], a[1] + d], h)
 
     alpha = np.array([Y[-1][1], Y[-1][3]])
     alpha_a0 = [Y_a0[-1][1], Y_a0[-1][3]]
